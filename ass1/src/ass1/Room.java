@@ -3,21 +3,24 @@
  */
 package ass1;
 
+import java.security.KeyStore.PrivateKeyEntry;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import com.sun.accessibility.internal.resources.accessibility;
 
 /**
  * @author jymot
  *
  */
 public class Room {
-	int roomNumber;
-	int capacity;
-	ArrayList<Booking> bookings;
+	private int roomNumber;
+	private int capacity;
 
 	/**
 	 * @param Capacity
 	 */
-	public Room(int roomNumber,int capacity) {
+	public Room(int roomNumber, int capacity) {
 		this.roomNumber = roomNumber;
 		this.capacity = capacity;
 	}
@@ -28,4 +31,13 @@ public class Room {
 	public int getRoomNumber() {
 		return roomNumber;
 	}
+
+	/**
+	 * @return the capacity
+	 */
+	public int getCapacity() {
+		return capacity;
+	}
+	
+	
 }
