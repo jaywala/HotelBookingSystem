@@ -15,6 +15,7 @@ public class Booking {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private ArrayList<Room> rooms;
+	private Hotel hotel;
 	
 	
 
@@ -24,12 +25,13 @@ public class Booking {
 	 * @param startDate
 	 * @param endDate
 	 */
-	public Booking(String customer, ArrayList<Room> rooms, LocalDate startDate, LocalDate endDate) {
+	public Booking(String customer, ArrayList<Room> rooms, LocalDate startDate, LocalDate endDate, Hotel hotel) {
 		// TODO Auto-generated constructor stub
 		this.customer = customer;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.rooms = rooms;
+		this.hotel = hotel;
 	}
 
 
@@ -92,6 +94,14 @@ public class Booking {
 	 */
 	public LocalDate getEndDate() {
 		return endDate;
+	}
+
+
+	/**
+	 * @return the hotel
+	 */
+	public Hotel getHotel() {
+		return hotel;
 	}
 
 

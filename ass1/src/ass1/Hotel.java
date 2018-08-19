@@ -110,7 +110,7 @@ public class Hotel {
 	 */
 	public void bookRooms(ArrayList<Room> foundRooms, String name, LocalDate startDate, LocalDate endDate) {
 		// TODO Auto-generated method stub
-		Booking booking = new Booking(name, foundRooms, startDate, endDate);
+		Booking booking = new Booking(name, foundRooms, startDate, endDate, this);
 		bookings.add(booking);
 	}
 
@@ -119,15 +119,15 @@ public class Hotel {
 	 * @param name
 	 * @return
 	 */
-	public boolean cancelBooking(String name) {
+	public Booking cancelBooking(String name) {
 		// TODO Auto-generated method stub
 		for (Booking booking : bookings) {
 			if (name.equals(booking.getCustomer())) {
 				bookings.remove(booking);
-				return true;
+				return booking;
 			}
 		}
-		return false;
+		return null;
 	}
 
 
@@ -160,7 +160,7 @@ public class Hotel {
 	 * @param endDate
 	 * @return
 	 */
-	private String dateToString(LocalDate startDate, LocalDate endDate) {
+	public String dateToString(LocalDate startDate, LocalDate endDate) {
 		StringJoiner dateString = new StringJoiner(" ");
 //		Add Month of booking
 		dateString.add(monthToString(startDate.getMonthValue()));
@@ -171,13 +171,17 @@ public class Hotel {
 		return dateString.toString();
 		
 	}
+	
+	public void appendBooking(Booking booking) {
+		bookings.add(booking);
+	}
 
 
 	/**
 	 * @param monthValue
 	 * @return
 	 */
-	private String monthToString(int monthValue) {
+	public String monthToString(int monthValue) {
 		// TODO Auto-generated method stub
 		switch (monthValue) {
 		case 1:

@@ -1,23 +1,4 @@
-Hotel Surfers 101 1
-Hotel Surfers 102 1
-Hotel Surfers 103 1
-Hotel Surfers 104 1
-Hotel Surfers 105 1
-Hotel Surfers 106 1
-Hotel Surfers 107 1
-Hotel Surfers 108 1
-Hotel Surfers 109 1
-Hotel Surfers 110 1
-Hotel Surfers 111 2
-Hotel Surfers 112 2
-Hotel Surfers 113 2
-Hotel Surfers 114 2
-Hotel Surfers 115 2
-Hotel Surfers 116 2
-Hotel Surfers 117 2
-Hotel Surfers 118 2
-Hotel Surfers 119 2
-Hotel Surfers 120 2
-Booking Aarthi Jan 25 2 single 10 double 11
-Booking John Jan 26 1 single 10
+Hotel Surfers 101 2
+Booking Aarthi Jan 25 2 double 1
+Cancel Aarthi
 Print Surfers

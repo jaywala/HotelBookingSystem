@@ -99,7 +99,8 @@ public class HotelBookingSystem {
 				
 			case "Change":
 //				Cancel Booking First
-				if (!cancelRequest(words[1])) {
+				Booking temp = cancelRequest(words[1]);
+				if (temp == null) {
 					System.out.println("Change rejected");
 				}
 				
@@ -118,11 +119,15 @@ public class HotelBookingSystem {
 				
 				String outputChange = bookingRequest(words[1], startDateChange, endDateChange,roomTypesChange);
 				System.out.println("Change " + outputChange);
+//				Add Back the previous booking if booking change can not be made
+				if ("rejected".equals(outputChange)) {
+					temp.getHotel().appendBooking(temp);
+				}
 				return;
 				
 			case "Cancel":
 //				Cancel Request by customer name
-				if (cancelRequest(words[1])) {
+				if (cancelRequest(words[1])!=null) {
 					System.out.println("Cancel " + words[1]);
 				} else {
 					System.out.println("Cancel rejected");
@@ -170,13 +175,14 @@ public class HotelBookingSystem {
 		}
 	}
 	
-	public boolean cancelRequest(String name) {
+	public Booking cancelRequest(String name) {
 		for (Hotel hotel : hotels) {
-			if (hotel.cancelBooking(name)) {
-				return true;
+			Booking booking = hotel.cancelBooking(name);
+			if (booking != null) {
+				return booking;
 			}
 		}
-		return false;
+		return null;
 	}
 	
 	/**
