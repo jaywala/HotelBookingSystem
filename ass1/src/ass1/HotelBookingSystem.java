@@ -83,7 +83,7 @@ public class HotelBookingSystem {
 		switch(words[0]) {
 			case "Hotel":
 				addHotelRoom(words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]));
-				break;
+				return;
 			case "Booking":
 				int roomsRequired = (words.length - 5)/2;
 				int[] roomTypes = new int[3];
@@ -99,9 +99,9 @@ public class HotelBookingSystem {
 				}
 				
 //				Call function with correct information
-				String outputBook = bookingRequest(words[1], startDate, endDate,roomTypes);
-				System.out.println("Booking " + outputBook);
-				break;
+				String outputBooking = bookingRequest(words[1], startDate, endDate,roomTypes);
+				System.out.println("Booking " + outputBooking);
+				return;
 				
 			case "Change":
 //				Cancel Booking First
@@ -124,7 +124,7 @@ public class HotelBookingSystem {
 				
 				String outputChange = bookingRequest(words[1], startDateChange, endDateChange,roomTypesChange);
 				System.out.println("Change " + outputChange);
-				break;
+				return;
 				
 			case "Cancel":
 				if (cancelRequest(words[1])) {
@@ -132,7 +132,7 @@ public class HotelBookingSystem {
 				} else {
 					System.out.println("Cancel rejected");
 				}
-				break;
+				return;
 				
 			case "Print":
 				String name = words[1];
@@ -141,7 +141,7 @@ public class HotelBookingSystem {
 						hotel.printRoomsOccupancy();
 					}
 				}
-				break;
+				return;
 			default :
 	            System.out.println("Invalid Input");
 		}

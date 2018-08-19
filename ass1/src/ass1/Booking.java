@@ -35,8 +35,9 @@ public class Booking {
 		// TODO Auto-generated method stub
 		boolean roomInBooking = false;
 		for (Room room2 : rooms) {
-			if(room == room2) {
+			if(room.getRoomNumber() == room2.getRoomNumber()) {
 				roomInBooking = true;
+				break;
 			}
 		}
 //		Is room in this booking
@@ -44,9 +45,9 @@ public class Booking {
 			return true;
 		}
 //		If room is in this booking is it booked on the dates we are looking for?
-		if (startDate.isBefore(this.startDate) && endDate.isBefore(this.endDate)) {
+		if (startDate.isBefore(this.startDate) && endDate.isBefore(this.startDate)) {
 			return true;
-		} else if (startDate.isAfter(this.startDate) && endDate.isAfter(this.endDate)) {
+		} else if (startDate.isAfter(this.endDate) && endDate.isAfter(this.endDate)) {
 			return true;
 		}
 		return false;
