@@ -1,0 +1,22 @@
+Booking rejected
+Booking John Surfers 101 102 103 104 105 106 107 108 109 110
+Surfers 101 Jan 26 1
+Surfers 102 Jan 26 1
+Surfers 103 Jan 26 1
+Surfers 104 Jan 26 1
+Surfers 105 Jan 26 1
+Surfers 106 Jan 26 1
+Surfers 107 Jan 26 1
+Surfers 108 Jan 26 1
+Surfers 109 Jan 26 1
+Surfers 110 Jan 26 1
+Surfers 111
+Surfers 112
+Surfers 113
+Surfers 114
+Surfers 115
+Surfers 116
+Surfers 117
+Surfers 118
+Surfers 119
+Surfers 120

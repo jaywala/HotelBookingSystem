@@ -4,16 +4,9 @@
 package ass1;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.StringJoiner;
-
-import org.omg.DynamicAny.DynAnySeqHelper;
-
-import com.sun.org.apache.bcel.internal.generic.ReturnInstruction;
-import com.sun.xml.internal.bind.v2.runtime.Name;
 
 /**
  * @author jymot
@@ -35,29 +28,16 @@ public class Hotel {
 		this.bookings = new ArrayList<Booking>();
 	}
 
-
-	/**
-	 * @param hotelName
-	 * @return
-	 */
-	public boolean compareName(String hotelName) {
-		// TODO Auto-generated method stub
-		if (hotelName.equals(this.name)) {
-			return true;
-		}
-		return false;
-	}
 	
+	/**
+	 * @param roomNumber
+	 * @param capacity
+	 */
 	public void addRoom(int roomNumber, int capacity) {
 		Room room = new Room(roomNumber, capacity);
 		rooms.add(room);
 	}
 	
-	public Room findRoom(int capacity) {
-		Room room = null;
-		return room;
-	}
-
 
 	/**
 	 * @return the name
@@ -68,13 +48,11 @@ public class Hotel {
 
 
 	/**
-	 * @return the rooms
+	 * @param startDate
+	 * @param endDate
+	 * @param roomTypes
+	 * @return
 	 */
-	public ArrayList<Room> getRooms() {
-		return rooms;
-	}
-
-
 	public ArrayList<Room> findRooms(LocalDate startDate, LocalDate endDate, int[] roomTypes) {
 		// TODO Auto-generated method stub
 		ArrayList<Room> foundRooms = new ArrayList<Room>();
@@ -107,6 +85,12 @@ public class Hotel {
 	}
 
 
+	/**
+	 * @param room
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	private boolean roomAvailable(Room room, LocalDate startDate, LocalDate endDate) {
 		// TODO Auto-generated method stub
 		for (Booking booking : bookings) {
@@ -118,6 +102,12 @@ public class Hotel {
 	}
 
 
+	/**
+	 * @param foundRooms
+	 * @param name
+	 * @param startDate
+	 * @param endDate
+	 */
 	public void bookRooms(ArrayList<Room> foundRooms, String name, LocalDate startDate, LocalDate endDate) {
 		// TODO Auto-generated method stub
 		Booking booking = new Booking(name, foundRooms, startDate, endDate);
@@ -125,6 +115,10 @@ public class Hotel {
 	}
 
 
+	/**
+	 * @param name
+	 * @return
+	 */
 	public boolean cancelBooking(String name) {
 		// TODO Auto-generated method stub
 		for (Booking booking : bookings) {
@@ -137,12 +131,14 @@ public class Hotel {
 	}
 
 
+	/**
+	 * 
+	 */
 	public void printRoomsOccupancy() {
 		// TODO Auto-generated method stub
 		ArrayList<Booking> bookings2 = bookings;
+//		Sorted arraylist of bookings by Dates
 		bookings2.sort((b1, b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
-		ArrayList<LocalDate> startDates = new ArrayList<LocalDate>();
-		ArrayList<LocalDate> endDates = new ArrayList<LocalDate>();
 		for (Room room : rooms) {
 			StringJoiner output = new StringJoiner(" ");
 			output.add(this.name);
@@ -159,17 +155,28 @@ public class Hotel {
 		}
 	}
 
+	/**
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	private String dateToString(LocalDate startDate, LocalDate endDate) {
 		StringJoiner dateString = new StringJoiner(" ");
-//		String dateString = new String();
+//		Add Month of booking
 		dateString.add(monthToString(startDate.getMonthValue()));
+//		Add date of Booking
 		dateString.add(Integer.toString(startDate.getDayOfMonth()));
+//		Add number of days in booking
 		dateString.add(Long.toString(startDate.until(endDate,ChronoUnit.DAYS)+1));
 		return dateString.toString();
 		
 	}
 
 
+	/**
+	 * @param monthValue
+	 * @return
+	 */
 	private String monthToString(int monthValue) {
 		// TODO Auto-generated method stub
 		switch (monthValue) {
@@ -214,14 +221,5 @@ public class Hotel {
 		}
 		return null;
 	}
-	
-	
-
-
-//	public boolean checkAvailability() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-	
 	
 }

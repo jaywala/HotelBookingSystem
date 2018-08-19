@@ -3,7 +3,6 @@
  */
 package ass1;
 
-import java.awt.print.Book;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -14,16 +13,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
-import com.sun.corba.se.impl.protocol.giopmsgheaders.CancelRequestMessage;
-import com.sun.glass.ui.TouchInputSupport;
-import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.IntType;
-import com.sun.xml.internal.bind.v2.runtime.Name;
-import com.sun.xml.internal.ws.api.Cancelable;
-
-import javafx.scene.shape.Line;
 
 /**
  * @author Jay Motwani
@@ -61,10 +50,15 @@ public class HotelBookingSystem {
 		
 	}
 
+	/**
+	 * @param hotelName
+	 * @param roomNumber
+	 * @param capacity
+	 */
 	public void addHotelRoom(String hotelName,int roomNumber , int capacity) {
 //		Check if Current Hotel Exists
 		for (Hotel hotel : hotels) {
-			if (hotel.compareName(hotelName) == true) {
+			if (hotelName.equals(hotel.getName())) {
 				hotel.addRoom(roomNumber, capacity);
 				return;
 			}
@@ -78,7 +72,7 @@ public class HotelBookingSystem {
 	 * @param line
 	 */
 	public void processRequest(String line) {
-		// TODO Auto-generated method stub
+		// Function for converting command line information and call approprite functions
 		String[] words = line.split(" ");
 		switch(words[0]) {
 			case "Hotel":
@@ -127,6 +121,7 @@ public class HotelBookingSystem {
 				return;
 				
 			case "Cancel":
+//				Cancel Request by customer name
 				if (cancelRequest(words[1])) {
 					System.out.println("Cancel " + words[1]);
 				} else {
@@ -136,6 +131,7 @@ public class HotelBookingSystem {
 				
 			case "Print":
 				String name = words[1];
+//				Print Occupancy for each hotel
 				for (Hotel hotel : hotels) {
 					if(name.equals(hotel.getName())) {
 						hotel.printRoomsOccupancy();
@@ -148,10 +144,11 @@ public class HotelBookingSystem {
 	}
 		
 	
-	private String bookingRequest(String name, LocalDate startDate, LocalDate endDate, int[] roomTypes) {
+	public String bookingRequest(String name, LocalDate startDate, LocalDate endDate, int[] roomTypes) {
 		// TODO Auto-generated method stub
 		ArrayList<Room> foundRooms = null;
 		Hotel foundHotel = null;
+//		Find correct rooms in any hotel and book them
 		for (Hotel hotel : hotels) {
 			foundRooms = hotel.findRooms(startDate, endDate, roomTypes);
 			if (foundRooms != null) {
@@ -160,6 +157,8 @@ public class HotelBookingSystem {
 				break;
 			}
 		}
+		
+//		Make Output String for terminal
 		if (foundRooms == null) {
 			return String.format("rejected");
 		} else {
@@ -178,17 +177,6 @@ public class HotelBookingSystem {
 			}
 		}
 		return false;
-	}
-
-	//	tesing Function	
-	public void printAllHotelsAndRooms() {
-		for (Hotel hotel : hotels) {
-			System.out.println(hotel.getName());
-			ArrayList<Room> rooms = hotel.getRooms();
-			for (Room room : rooms) {
-				System.out.println(String.format("Hotel: %s: Room: %s", hotel.getName(), room.getRoomNumber()));
-			}
-		}
 	}
 	
 	/**

@@ -3,9 +3,7 @@
  */
 package ass1;
 
-import java.beans.Customizer;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 
 /**
@@ -19,8 +17,12 @@ public class Booking {
 	private ArrayList<Room> rooms;
 	
 	
+
 	/**
-	 * 
+	 * @param customer
+	 * @param rooms
+	 * @param startDate
+	 * @param endDate
 	 */
 	public Booking(String customer, ArrayList<Room> rooms, LocalDate startDate, LocalDate endDate) {
 		// TODO Auto-generated constructor stub
@@ -31,6 +33,12 @@ public class Booking {
 	}
 
 
+	/**
+	 * @param room
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	public boolean roomAvailable(Room room, LocalDate startDate, LocalDate endDate) {
 		// TODO Auto-generated method stub
 		boolean roomInBooking = false;
@@ -40,16 +48,17 @@ public class Booking {
 				break;
 			}
 		}
-//		Is room in this booking
+//		If room is not in this booking, room is not occupied in this booking
 		if (!roomInBooking) {
 			return true;
 		}
-//		If room is in this booking is it booked on the dates we are looking for?
+//		If room is in this booking check if it is available on the required dates
 		if (startDate.isBefore(this.startDate) && endDate.isBefore(this.startDate)) {
 			return true;
 		} else if (startDate.isAfter(this.endDate) && endDate.isAfter(this.endDate)) {
 			return true;
 		}
+//		If room is in booking and not available on the required dates return false
 		return false;
 	}
 

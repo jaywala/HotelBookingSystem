@@ -1,0 +1,10 @@
+Hotel Surfers 101 1
+Hotel Surfers 102 2
+Hotel Surfers 103 3
+Hotel Burleigh 101 2
+Booking Aarthi Jan 29 3 single 1
+Booking Rob Jan 31 1 single 1
+Booking Jordan Jan 30 1 single 1
+Print Surfers
+
+# Thorough date testing to check dates in between of checkin and checkout dates and also test month with 31st

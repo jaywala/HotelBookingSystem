@@ -1,9 +1,0 @@
-Hotel Surfers 101 1
-Hotel Surfers 102 2
-Hotel Surfers 103 3
-Hotel Burleigh 101 2
-Booking Aarthi Jan 22 3 single 1
-Booking Rob Jan 23 3 single 1
-Print Surfers
-
-# Basic Functionality Testing file to test if system works
